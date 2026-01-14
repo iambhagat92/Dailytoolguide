@@ -311,9 +311,10 @@
 
         <!-- Main Heading for SEO -->
         <header style="text-align: center; margin-bottom: 2rem;">
-            <h1 style="color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 1rem;">Free Online Web Tools &
-                Calculators for Freelancers</h1>
-            <p style="color: var(--text-light); max-width: 700px; margin: 0 auto; font-size: 1.1rem;">
+            <h1 style="color: var(--primary-dark); font-size: 2.2rem; margin-bottom: 1rem;" data-i18n="header_h1">Free
+                Online Web Tools & Calculators for Freelancers</h1>
+            <p style="color: var(--text-light); max-width: 700px; margin: 0 auto; font-size: 1.1rem;"
+                data-i18n="header_p">
                 Boost your productivity with our suite of 10 essential tools using
                 <strong>Overtime Pay Calculators</strong>, <strong>SEO Generators</strong>, and <strong>YouTube Profit
                     Estimators</strong>.
@@ -325,27 +326,27 @@
         <section id="tool1">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">1. Overtime & Night Shift Pay Calculator</h2>
+                    <h2 class="card-title" data-i18n="t1_title">1. Overtime & Night Shift Pay Calculator</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Hourly Rate</label><input type="number" id="t1_rate" min="0"
-                            step="0.01"></div>
-                    <div class="form-group"><label>Normal Hours</label><input type="number" id="t1_normHrs" min="0">
-                    </div>
-                    <div class="form-group"><label>Overtime Hours</label><input type="number" id="t1_otHrs" min="0">
-                    </div>
-                    <div class="form-group"><label>OT Multiplier (e.g. 1.5)</label><input type="number" id="t1_otMult"
-                            min="0" step="0.1" value="1.5"></div>
-                    <div class="form-group"><label>Night Hours</label><input type="number" id="t1_nightHrs" min="0">
-                    </div>
-                    <div class="form-group"><label>Night Diff %</label><input type="number" id="t1_nightDiff" min="0"
-                            value="10"></div>
-                    <div class="form-group"><label>Weekend Hours</label><input type="number" id="t1_wkHrs" min="0">
-                    </div>
-                    <div class="form-group"><label>Weekend Bonus %</label><input type="number" id="t1_wkBonus" min="0"
-                            value="30"></div>
+                    <div class="form-group"><label data-i18n="t1_l1">Hourly Rate</label><input type="number"
+                            id="t1_rate" min="0" step="0.01"></div>
+                    <div class="form-group"><label data-i18n="t1_l2">Normal Hours</label><input type="number"
+                            id="t1_normHrs" min="0"></div>
+                    <div class="form-group"><label data-i18n="t1_l3">Overtime Hours</label><input type="number"
+                            id="t1_otHrs" min="0"></div>
+                    <div class="form-group"><label data-i18n="t1_l4">OT Multiplier (e.g. 1.5)</label><input
+                            type="number" id="t1_otMult" min="0" step="0.1" value="1.5"></div>
+                    <div class="form-group"><label data-i18n="t1_l5">Night Hours</label><input type="number"
+                            id="t1_nightHrs" min="0"></div>
+                    <div class="form-group"><label data-i18n="t1_l6">Night Diff %</label><input type="number"
+                            id="t1_nightDiff" min="0" value="10"></div>
+                    <div class="form-group"><label data-i18n="t1_l7">Weekend Hours</label><input type="number"
+                            id="t1_wkHrs" min="0"></div>
+                    <div class="form-group"><label data-i18n="t1_l8">Weekend Bonus %</label><input type="number"
+                            id="t1_wkBonus" min="0" value="30"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool1()">Calculate Pay</button>
+                <button class="calc-btn" onclick="calcTool1()" data-i18n="t1_btn">Calculate Pay</button>
                 <div id="res1" class="result-box"></div>
             </div>
         </section>
@@ -354,21 +355,23 @@
         <section id="tool2">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">2. Freelancer Late Payment Interest</h2>
+                    <h2 class="card-title" data-i18n="t2_title">2. Freelancer Late Payment Interest</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Invoice Amount</label><input type="number" id="t2_amount" min="0"
-                            step="0.01"></div>
-                    <div class="form-group"><label>Due Date</label><input type="date" id="t2_due"></div>
-                    <div class="form-group"><label>Paid Date</label><input type="date" id="t2_paid"></div>
-                    <div class="form-group"><label>Annual Interest %</label><input type="number" id="t2_interest"
-                            min="0" step="0.1" value="8"></div>
-                    <div class="form-group"><label>Fixed Late Fee</label><input type="number" id="t2_fixed" min="0"
-                            value="40"></div>
-                    <div class="form-group"><label>Daily Fee</label><input type="number" id="t2_daily" min="0"
-                            value="0"></div>
+                    <div class="form-group"><label data-i18n="t2_l1">Invoice Amount</label><input type="number"
+                            id="t2_amount" min="0" step="0.01"></div>
+                    <div class="form-group"><label data-i18n="t2_l2">Due Date</label><input type="date" id="t2_due">
+                    </div>
+                    <div class="form-group"><label data-i18n="t2_l3">Paid Date</label><input type="date" id="t2_paid">
+                    </div>
+                    <div class="form-group"><label data-i18n="t2_l4">Annual Interest %</label><input type="number"
+                            id="t2_interest" min="0" step="0.1" value="8"></div>
+                    <div class="form-group"><label data-i18n="t2_l5">Fixed Late Fee</label><input type="number"
+                            id="t2_fixed" min="0" value="40"></div>
+                    <div class="form-group"><label data-i18n="t2_l6">Daily Fee</label><input type="number" id="t2_daily"
+                            min="0" value="0"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool2()">Calculate Interest & Fees</button>
+                <button class="calc-btn" onclick="calcTool2()" data-i18n="t2_btn">Calculate Interest & Fees</button>
                 <div id="res2" class="result-box"></div>
             </div>
         </section>
@@ -377,13 +380,13 @@
         <section id="tool3">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">3. SEO Content Brief Generator</h2>
+                    <h2 class="card-title" data-i18n="t3_title">3. SEO Content Brief Generator</h2>
                 </div>
                 <div class="form-grid" style="grid-template-columns: 1fr;">
-                    <div class="form-group"><label>Target Keyword</label><input type="text" id="t3_keyword"
-                            placeholder="e.g., 'best running shoes'"></div>
+                    <div class="form-group"><label data-i18n="t3_l1">Target Keyword</label><input type="text"
+                            id="t3_keyword" placeholder="e.g., 'best running shoes'" data-i18n="t3_ph"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool3()">Generate Brief</button>
+                <button class="calc-btn" onclick="calcTool3()" data-i18n="t3_btn">Generate Brief</button>
                 <div id="res3" class="result-box"></div>
             </div>
         </section>
@@ -392,18 +395,19 @@
         <section id="tool4">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">4. AdSense RPM & Earnings</h2>
+                    <h2 class="card-title" data-i18n="t4_title">4. AdSense RPM & Earnings</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Pageviews</label><input type="number" id="t4_views" min="0"></div>
-                    <div class="form-group"><label>CTR %</label><input type="number" id="t4_ctr" min="0" step="0.01"
-                            value="1.5"></div>
-                    <div class="form-group"><label>CPC ($)</label><input type="number" id="t4_cpc" min="0" step="0.01"
-                            value="0.5"></div>
-                    <div class="form-group"><label>RPM ($)</label><input type="number" id="t4_rpm" min="0" step="0.01"
-                            value="5.0"></div>
+                    <div class="form-group"><label data-i18n="t4_l1">Pageviews</label><input type="number" id="t4_views"
+                            min="0"></div>
+                    <div class="form-group"><label data-i18n="t4_l2">CTR %</label><input type="number" id="t4_ctr"
+                            min="0" step="0.01" value="1.5"></div>
+                    <div class="form-group"><label data-i18n="t4_l3">CPC ($)</label><input type="number" id="t4_cpc"
+                            min="0" step="0.01" value="0.5"></div>
+                    <div class="form-group"><label data-i18n="t4_l4">RPM ($)</label><input type="number" id="t4_rpm"
+                            min="0" step="0.01" value="5.0"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool4()">Calculate Earnings</button>
+                <button class="calc-btn" onclick="calcTool4()" data-i18n="t4_btn">Calculate Earnings</button>
                 <div id="res4" class="result-box"></div>
             </div>
         </section>
@@ -412,21 +416,25 @@
         <section id="tool5">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">5. YouTube Video Profit</h2>
+                    <h2 class="card-title" data-i18n="t5_title">5. YouTube Video Profit</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Script Cost</label><input type="number" id="t5_script" min="0"></div>
-                    <div class="form-group"><label>Voiceover Cost</label><input type="number" id="t5_voice" min="0">
-                    </div>
-                    <div class="form-group"><label>Editing Cost</label><input type="number" id="t5_edit" min="0"></div>
-                    <div class="form-group"><label>Thumbnail Cost</label><input type="number" id="t5_thumb" min="0">
-                    </div>
-                    <div class="form-group"><label>Other Costs</label><input type="number" id="t5_other" min="0"></div>
-                    <div class="form-group"><label>Views</label><input type="number" id="t5_views" min="0"></div>
-                    <div class="form-group"><label>RPM ($)</label><input type="number" id="t5_rpm" min="0" step="0.01">
-                    </div>
+                    <div class="form-group"><label data-i18n="t5_l1">Script Cost</label><input type="number"
+                            id="t5_script" min="0"></div>
+                    <div class="form-group"><label data-i18n="t5_l2">Voiceover Cost</label><input type="number"
+                            id="t5_voice" min="0"></div>
+                    <div class="form-group"><label data-i18n="t5_l3">Editing Cost</label><input type="number"
+                            id="t5_edit" min="0"></div>
+                    <div class="form-group"><label data-i18n="t5_l4">Thumbnail Cost</label><input type="number"
+                            id="t5_thumb" min="0"></div>
+                    <div class="form-group"><label data-i18n="t5_l5">Other Costs</label><input type="number"
+                            id="t5_other" min="0"></div>
+                    <div class="form-group"><label data-i18n="t5_l6">Views</label><input type="number" id="t5_views"
+                            min="0"></div>
+                    <div class="form-group"><label data-i18n="t5_l7">RPM ($)</label><input type="number" id="t5_rpm"
+                            min="0" step="0.01"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool5()">Calculate Profit</button>
+                <button class="calc-btn" onclick="calcTool5()" data-i18n="t5_btn">Calculate Profit</button>
                 <div id="res5" class="result-box"></div>
             </div>
         </section>
@@ -435,21 +443,21 @@
         <section id="tool6">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">6. Subscription vs One-Time</h2>
+                    <h2 class="card-title" data-i18n="t6_title">6. Subscription vs One-Time</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>One-Time Price</label><input type="number" id="t6_oneTime" min="0">
-                    </div>
-                    <div class="form-group"><label>Monthly Price</label><input type="number" id="t6_monthly" min="0">
-                    </div>
-                    <div class="form-group"><label>Duration (Months)</label><input type="number" id="t6_months" min="1"
-                            value="12"></div>
-                    <div class="form-group"><label>Churn Rate %</label><input type="number" id="t6_churn" min="0"
-                            value="5"></div>
-                    <div class="form-group"><label>CAC (Cost to Acquire)</label><input type="number" id="t6_cac"
-                            min="0"></div>
+                    <div class="form-group"><label data-i18n="t6_l1">One-Time Price</label><input type="number"
+                            id="t6_oneTime" min="0"></div>
+                    <div class="form-group"><label data-i18n="t6_l2">Monthly Price</label><input type="number"
+                            id="t6_monthly" min="0"></div>
+                    <div class="form-group"><label data-i18n="t6_l3">Duration (Months)</label><input type="number"
+                            id="t6_months" min="1" value="12"></div>
+                    <div class="form-group"><label data-i18n="t6_l4">Churn Rate %</label><input type="number"
+                            id="t6_churn" min="0" value="5"></div>
+                    <div class="form-group"><label data-i18n="t6_l5">CAC (Cost to Acquire)</label><input type="number"
+                            id="t6_cac" min="0"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool6()">Compare Models</button>
+                <button class="calc-btn" onclick="calcTool6()" data-i18n="t6_btn">Compare Models</button>
                 <div id="res6" class="result-box"></div>
             </div>
         </section>
@@ -458,18 +466,19 @@
         <section id="tool7">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">7. Rank & Rent Profit</h2>
+                    <h2 class="card-title" data-i18n="t7_title">7. Rank & Rent Profit</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Setup Cost</label><input type="number" id="t7_setup" min="0"></div>
-                    <div class="form-group"><label>Monthly SEO Cost</label><input type="number" id="t7_seo" min="0">
-                    </div>
-                    <div class="form-group"><label>Monthly Rent Income</label><input type="number" id="t7_rent" min="0">
-                    </div>
-                    <div class="form-group"><label>Months</label><input type="number" id="t7_months" min="1" value="12">
-                    </div>
+                    <div class="form-group"><label data-i18n="t7_l1">Setup Cost</label><input type="number"
+                            id="t7_setup" min="0"></div>
+                    <div class="form-group"><label data-i18n="t7_l2">Monthly SEO Cost</label><input type="number"
+                            id="t7_seo" min="0"></div>
+                    <div class="form-group"><label data-i18n="t7_l3">Monthly Rent Income</label><input type="number"
+                            id="t7_rent" min="0"></div>
+                    <div class="form-group"><label data-i18n="t7_l4">Months</label><input type="number" id="t7_months"
+                            min="1" value="12"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool7()">Calculate ROI</button>
+                <button class="calc-btn" onclick="calcTool7()" data-i18n="t7_btn">Calculate ROI</button>
                 <div id="res7" class="result-box"></div>
             </div>
         </section>
@@ -478,23 +487,23 @@
         <section id="tool8">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">8. Refund & Chargeback Impact</h2>
+                    <h2 class="card-title" data-i18n="t8_title">8. Refund & Chargeback Impact</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Product Price</label><input type="number" id="t8_price" min="0">
-                    </div>
-                    <div class="form-group"><label>Total Sales (#)</label><input type="number" id="t8_sales" min="0">
-                    </div>
-                    <div class="form-group"><label>Refund Rate %</label><input type="number" id="t8_refund" min="0"
-                            step="0.1" value="5"></div>
-                    <div class="form-group"><label>Chargeback Rate %</label><input type="number" id="t8_cb" min="0"
-                            step="0.1" value="1"></div>
-                    <div class="form-group"><label>Gateway Fee %</label><input type="number" id="t8_gate" min="0"
-                            step="0.1" value="2.9"></div>
-                    <div class="form-group"><label>Platform Fee %</label><input type="number" id="t8_plat" min="0"
-                            step="0.1" value="10"></div>
+                    <div class="form-group"><label data-i18n="t8_l1">Product Price</label><input type="number"
+                            id="t8_price" min="0"></div>
+                    <div class="form-group"><label data-i18n="t8_l2">Total Sales (#)</label><input type="number"
+                            id="t8_sales" min="0"></div>
+                    <div class="form-group"><label data-i18n="t8_l3">Refund Rate %</label><input type="number"
+                            id="t8_refund" min="0" step="0.1" value="5"></div>
+                    <div class="form-group"><label data-i18n="t8_l4">Chargeback Rate %</label><input type="number"
+                            id="t8_cb" min="0" step="0.1" value="1"></div>
+                    <div class="form-group"><label data-i18n="t8_l5">Gateway Fee %</label><input type="number"
+                            id="t8_gate" min="0" step="0.1" value="2.9"></div>
+                    <div class="form-group"><label data-i18n="t8_l6">Platform Fee %</label><input type="number"
+                            id="t8_plat" min="0" step="0.1" value="10"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool8()">Calculate Losses</button>
+                <button class="calc-btn" onclick="calcTool8()" data-i18n="t8_btn">Calculate Losses</button>
                 <div id="res8" class="result-box"></div>
             </div>
         </section>
@@ -503,14 +512,15 @@
         <section id="tool9">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">9. Contract Review Estimator</h2>
+                    <h2 class="card-title" data-i18n="t9_title">9. Contract Review Estimator</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Number of Pages</label><input type="number" id="t9_pages" min="1">
-                    </div>
-                    <div class="form-group"><label>Hourly Rate</label><input type="number" id="t9_rate" min="0"></div>
+                    <div class="form-group"><label data-i18n="t9_l1">Number of Pages</label><input type="number"
+                            id="t9_pages" min="1"></div>
+                    <div class="form-group"><label data-i18n="t9_l2">Hourly Rate</label><input type="number"
+                            id="t9_rate" min="0"></div>
                     <div class="form-group">
-                        <label>Complexity</label>
+                        <label data-i18n="t9_l3">Complexity</label>
                         <select id="t9_complex">
                             <option value="1">Low (1 hr/page)</option>
                             <option value="1.5">Medium (1.5 hrs/page)</option>
@@ -519,10 +529,10 @@
                     </div>
                     <div class="form-group checkbox-group">
                         <input type="checkbox" id="t9_urgent">
-                        <label for="t9_urgent">Urgent (+20%)</label>
+                        <label for="t9_urgent" data-i18n="t9_l4">Urgent (+20%)</label>
                     </div>
                 </div>
-                <button class="calc-btn" onclick="calcTool9()">Estimate Cost</button>
+                <button class="calc-btn" onclick="calcTool9()" data-i18n="t9_btn">Estimate Cost</button>
                 <div id="res9" class="result-box"></div>
             </div>
         </section>
@@ -531,17 +541,17 @@
         <section id="tool10">
             <div class="card">
                 <div class="card-header">
-                    <h2 class="card-title">10. Side Hustle Hourly Rate</h2>
+                    <h2 class="card-title" data-i18n="t10_title">10. Side Hustle Hourly Rate</h2>
                 </div>
                 <div class="form-grid">
-                    <div class="form-group"><label>Hustle Name</label><input type="text" id="t10_name"
-                            placeholder="E.g. Uber Driving"></div>
-                    <div class="form-group"><label>Weekly Hours</label><input type="number" id="t10_hours" min="1">
-                    </div>
-                    <div class="form-group"><label>Monthly Income</label><input type="number" id="t10_income" min="0">
-                    </div>
+                    <div class="form-group"><label data-i18n="t10_l1">Hustle Name</label><input type="text"
+                            id="t10_name" placeholder="E.g. Uber Driving"></div>
+                    <div class="form-group"><label data-i18n="t10_l2">Weekly Hours</label><input type="number"
+                            id="t10_hours" min="1"></div>
+                    <div class="form-group"><label data-i18n="t10_l3">Monthly Income</label><input type="number"
+                            id="t10_income" min="0"></div>
                 </div>
-                <button class="calc-btn" onclick="calcTool10()">Calculate Hourly Rate</button>
+                <button class="calc-btn" onclick="calcTool10()" data-i18n="t10_btn">Calculate Hourly Rate</button>
                 <div id="res10" class="result-box"></div>
             </div>
         </section>
@@ -779,7 +789,7 @@
     </style>
 
     <div class="share-section">
-        <h3 class="share-title">Share these tools with your network</h3>
+        <h3 class="share-title" data-i18n="share_title">Share these tools with your network</h3>
         <div class="share-buttons">
             <!-- Twitter/X -->
             <a href="#" onclick="share('tw'); return false;" class="share-btn btn-tw">
@@ -862,6 +872,209 @@
     <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
 
     <script>
+        const translations = {
+            en: {
+                nav_t1: "Pay Calc", nav_t2: "Late Fee", nav_t3: "SEO Brief", nav_t4: "AdSense", nav_t5: "YouTube",
+                nav_t6: "Sub vs One", nav_t7: "Rank & Rent", nav_t8: "Refunds", nav_t9: "Contract", nav_t10: "Side Hustle",
+
+                header_h1: "Free Online Web Tools & Calculators for Freelancers",
+                header_p: "Boost your productivity with our suite of 10 essential tools using Overtime Pay Calculators, SEO Generators, and YouTube Profit Estimators. 100% Free, Secure, and Instant.",
+
+                share_title: "Share these tools with your network",
+
+                // Tool 1
+                t1_title: "1. Overtime & Night Shift Pay Calculator",
+                t1_l1: "Hourly Rate", t1_l2: "Normal Hours", t1_l3: "Overtime Hours", t1_l4: "OT Multiplier (e.g. 1.5)",
+                t1_l5: "Night Hours", t1_l6: "Night Diff %", t1_l7: "Weekend Hours", t1_l8: "Weekend Bonus %",
+                t1_btn: "Calculate Pay",
+
+                // Tool 2
+                t2_title: "2. Freelancer Late Payment Interest",
+                t2_l1: "Invoice Amount", t2_l2: "Due Date", t2_l3: "Paid Date", t2_l4: "Annual Interest %",
+                t2_l5: "Fixed Late Fee", t2_l6: "Daily Fee",
+                t2_btn: "Calculate Interest & Fees",
+
+                // Tool 3
+                t3_title: "3. SEO Content Brief Generator",
+                t3_l1: "Target Keyword", t3_ph: "e.g., 'best running shoes'",
+                t3_btn: "Generate Brief",
+
+                // Tool 4
+                t4_title: "4. AdSense RPM & Earnings",
+                t4_l1: "Pageviews", t4_l2: "CTR %", t4_l3: "CPC ($)", t4_l4: "RPM ($)",
+                t4_btn: "Calculate Earnings",
+
+                // Tool 5
+                t5_title: "5. YouTube Video Profit",
+                t5_l1: "Script Cost", t5_l2: "Voiceover Cost", t5_l3: "Editing Cost", t5_l4: "Thumbnail Cost",
+                t5_l5: "Other Costs", t5_l6: "Views", t5_l7: "RPM ($)",
+                t5_btn: "Calculate Profit",
+
+                // Tool 6
+                t6_title: "6. Subscription vs One-Time",
+                t6_l1: "One-Time Price", t6_l2: "Monthly Price", t6_l3: "Duration (Months)", t6_l4: "Churn Rate %", t6_l5: "CAC",
+                t6_btn: "Compare Models",
+
+                // Tool 7
+                t7_title: "7. Rank & Rent Profit",
+                t7_l1: "Setup Cost", t7_l2: "Monthly SEO Cost", t7_l3: "Monthly Rent Income", t7_l4: "Months",
+                t7_btn: "Calculate ROI",
+
+                // Tool 8
+                t8_title: "8. Refund & Chargeback Impact",
+                t8_l1: "Product Price", t8_l2: "Total Sales (#)", t8_l3: "Refund Rate %", t8_l4: "Chargeback Rate %",
+                t8_l5: "Gateway Fee %", t8_l6: "Platform Fee %",
+                t8_btn: "Calculate Losses",
+
+                // Tool 9
+                t9_title: "9. Contract Review Estimator",
+                t9_l1: "Number of Pages", t9_l2: "Hourly Rate", t9_l3: "Complexity",
+                t9_opt1: "Low (1 hr/page)", t9_opt2: "Medium (1.5 hrs/page)", t9_opt3: "High (2 hrs/page)",
+                t9_l4: "Urgent (+20%)",
+                t9_btn: "Estimate Cost",
+
+                // Tool 10
+                t10_title: "10. Side Hustle Hourly Rate",
+                t10_l1: "Hustle Name", t10_l2: "Weekly Hours", t10_l3: "Monthly Income",
+                t10_btn: "Calculate Hourly Rate"
+            },
+            hi: {
+                nav_t1: "वेतन कैलकुलेटर", nav_t2: "विलंब शुल्क", nav_t3: "SEO ब्रीफ", nav_t4: "AdSense", nav_t5: "YouTube",
+                nav_t6: "Sub vs One", nav_t7: "रैंक और रेंट", nav_t8: "रिफंड", nav_t9: "अनुबंध", nav_t10: "साइड हसल",
+
+                header_h1: "फ्रीलांसरों के लिए मुफ्त ऑनलाइन वेब टूल्स और कैलकुलेटर्स",
+                header_p: "ओवरटाइम वेतन, SEO और YouTube लाभ का अनुमान लगाने के लिए हमारे 10 आवश्यक टूल का उपयोग करें। 100% मुफ्त, सुरक्षित और तुरंत।",
+
+                share_title: "इन टूल्स को अपने नेटवर्क के साथ साझा करें",
+
+                t1_title: "1. ओवरटाइम और नाइट शिफ्ट वेतन कैलकुलेटर",
+                t1_l1: "प्रति घंटा दर", t1_l2: "सामान्य घंटे", t1_l3: "ओवरटाइम घंटे", t1_l4: "OT गुना (जैसे 1.5)",
+                t1_l5: "रात के घंटे", t1_l6: "रात का अंतर %", t1_l7: "सप्ताहांत के घंटे", t1_l8: "सप्ताहांत बोनस %",
+                t1_btn: "वेतन की गणना करें",
+
+                t2_title: "2. फ्रीलांसर विलंब भुगतान ब्याज",
+                t2_l1: "इनवॉइस राशि", t2_l2: "देय तिथि", t2_l3: "भुगतान तिथि", t2_l4: "वार्षिक ब्याज %",
+                t2_l5: "निश्चित विलंब शुल्क", t2_l6: "दैनिक शुल्क",
+                t2_btn: "ब्याज और शुल्क की गणना करें",
+
+                t3_title: "3. SEO कंटेंट ब्रीफ जेनरेटर",
+                t3_l1: "लक्ष्य कीवर्ड", t3_ph: "जैसे, 'सबसे अच्छे जूते'",
+                t3_btn: "ब्रीफ जेनरेट करें",
+
+                t4_title: "4. AdSense RPM और कमाई",
+                t4_l1: "पेजव्यूज", t4_l2: "CTR %", t4_l3: "CPC ($)", t4_l4: "RPM ($)",
+                t4_btn: "कमाई की गणना करें",
+
+                t5_title: "5. YouTube वीडियो लाभ",
+                t5_l1: "स्क्रिप्ट लागत", t5_l2: "वॉयसओवर लागत", t5_l3: "एडिटिंग लागत", t5_l4: "थंबनेल लागत",
+                t5_l5: "अन्य लागत", t5_l6: "व्यूज", t5_l7: "RPM ($)",
+                t5_btn: "लाभ की गणना करें",
+
+                t6_title: "6. सब्सक्रिप्शन बनाम वन-टाइम",
+                t6_l1: "वन-टाइम कीमत", t6_l2: "मासिक कीमत", t6_l3: "अवधि (महीने)", t6_l4: " churn दर %", t6_l5: "CAC",
+                t6_btn: "मॉडल की तुलना करें",
+
+                t7_title: "7. रैंक और रेंट लाभ",
+                t7_l1: "सेटअप लागत", t7_l2: "मासिक SEO लागत", t7_l3: "मासिक रेंट आय", t7_l4: "महीने",
+                t7_btn: "ROI की गणना करें",
+
+                t8_title: "8. रिफंड और चार्जबैक प्रभाव",
+                t8_l1: "उत्पाद की कीमत", t8_l2: "कुल बिक्री (#)", t8_l3: "रिफंड दर %", t8_l4: "चार्जबैक दर %",
+                t8_l5: "गेटवे शुल्क %", t8_l6: "प्लेटफ़ॉर्म शुल्क %",
+                t8_btn: "नुकसान की गणना करें",
+
+                t9_title: "9. अनुबंध समीक्षा अनुमानक",
+                t9_l1: "पेजों की संख्या", t9_l2: "प्रति घंटा दर", t9_l3: "जटिलता",
+                t9_opt1: "कम (1 घंटा/पेज)", t9_opt2: "मध्यम (1.5 घंटे/पेज)", t9_opt3: "उच्च (2 घंटे/पेज)",
+                t9_l4: "तत्काल (+20%)",
+                t9_btn: "लागत का अनुमान लगाएं",
+
+                t10_title: "10. साइड हसल प्रति घंटा दर",
+                t10_l1: "हसल का नाम", t10_l2: "साप्ताहिक घंटे", t10_l3: "मासिक आय",
+                t10_btn: "दर की गणना करें"
+            },
+            es: {
+                nav_t1: "Pago Calc", nav_t2: "Cargo Mora", nav_t3: "SEO Breve", nav_t4: "AdSense", nav_t5: "YouTube",
+                nav_t6: "Sub vs Una", nav_t7: "Rank & Rent", nav_t8: "Reembolsos", nav_t9: "Contrato", nav_t10: "Trabajo Extra",
+
+                header_h1: "Herramientas Web y Calculadoras Gratuitas para Freelancers",
+                header_p: "Aumente su productividad con nuestro conjunto de 10 herramientas esenciales. 100% Gratis, Seguro e Inmediato.",
+
+                share_title: "Comparte estas herramientas con tu red",
+
+                t1_title: "1. Calculadora de Pago de Horas Extras",
+                t1_l1: "Tarifa por Hora", t1_l2: "Horas Normales", t1_l3: "Horas Extras", t1_l4: "Multiplicador de HE",
+                t1_l5: "Horas Nocturnas", t1_l6: "Dif. Nocturna %", t1_l7: "Horas Fin de Semana", t1_l8: "Bono Fin de Semana %",
+                t1_btn: "Calcular Pago",
+
+                t2_title: "2. Interés por Pago Tardío",
+                t2_l1: "Monto Factura", t2_l2: "Fecha Vencimiento", t2_l3: "Fecha Pago", t2_l4: "Interés Anual %",
+                t2_l5: "Cargo Fijo", t2_l6: "Cargo Diario",
+                t2_btn: "Calcular Interés y Cargos",
+
+                t3_title: "3. Generador de Brief SEO",
+                t3_l1: "Palabra Clave", t3_ph: "ej., 'zapatillas correr'",
+                t3_btn: "Generar Brief",
+
+                t4_title: "4. AdSense RPM y Ganancias",
+                t4_l1: "Visitas", t4_l2: "CTR %", t4_l3: "CPC ($)", t4_l4: "RPM ($)",
+                t4_btn: "Calcular Ganancias",
+
+                t5_title: "5. Beneficio de Video YouTube",
+                t5_l1: "Costo Guion", t5_l2: "Costo Voz", t5_l3: "Costo Edición", t5_l4: "Costo Miniatura",
+                t5_l5: "Otros Costos", t5_l6: "Vistas", t5_l7: "RPM ($)",
+                t5_btn: "Calcular Beneficio",
+
+                t6_title: "6. Suscripción vs Venta Única",
+                t6_l1: "Precio Único", t6_l2: "Precio Mensual", t6_l3: "Duración (Meses)", t6_l4: "Tasa Cancelación %", t6_l5: "CAC",
+                t6_btn: "Comparar Modelos",
+
+                t7_title: "7. Beneficio Rank & Rent",
+                t7_l1: "Costo Configuración", t7_l2: "Costo SEO Mensual", t7_l3: "Renta Mensual", t7_l4: "Meses",
+                t7_btn: "Calcular ROI",
+
+                t8_title: "8. Reembolsos y Contracargos",
+                t8_l1: "Precio Producto", t8_l2: "Ventas Totales", t8_l3: "Tasa Reembolso %", t8_l4: "Tasa Contracargo %",
+                t8_l5: "Tarifa Pasarela %", t8_l6: "Tarifa Plataforma %",
+                t8_btn: "Calcular Pérdidas",
+
+                t9_title: "9. Estimador Revisión Contrato",
+                t9_l1: "Número de Páginas", t9_l2: "Tarifa por Hora", t9_l3: "Complejidad",
+                t9_opt1: "Baja (1 hr/pág)", t9_opt2: "Media (1.5 hrs/pág)", t9_opt3: "Alta (2 hrs/pág)",
+                t9_l4: "Urgente (+20%)",
+                t9_btn: "Estimar Costo",
+
+                t10_title: "10. Tarifa por Hora Trabajo Extra",
+                t10_l1: "Nombre Trabajo", t10_l2: "Horas Semanales", t10_l3: "Ingreso Mensual",
+                t10_btn: "Calcular Tarifa"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            // Update elements with data-i18n
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) {
+                    if (el.tagName === 'INPUT' && el.getAttribute('placeholder')) {
+                        el.placeholder = t[key];
+                    } else {
+                        el.innerText = t[key];
+                    }
+                }
+            });
+
+            // Handle Option Selects specifically for Tool 9
+            const selT9 = document.getElementById('t9_complex');
+            if (selT9) {
+                selT9.options[0].text = t.t9_opt1;
+                selT9.options[1].text = t.t9_opt2;
+                selT9.options[2].text = t.t9_opt3;
+            }
+        }
+
         // Utilities
         const getVal = (id) => parseFloat(document.getElementById(id).value) || 0;
         const getStr = (id) => document.getElementById(id).value;
@@ -870,6 +1083,7 @@
             el.innerHTML = html;
             el.classList.add('show');
         };
+
         const formatMoney = (num) => '$' + num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
         // Tool 1: Overtime & Night Shift Pay
