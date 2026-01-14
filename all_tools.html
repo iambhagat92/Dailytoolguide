@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-in-1 Web Tools Suite</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #eff6ff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --bg-body: #f1f5f9;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding-top: 80px;
+            /* Space for sticky nav */
+            padding-bottom: 40px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            padding: 1rem 0;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            gap: 2rem;
+        }
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 1rem;
+        }
+
+        .card-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Forms */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        input,
+        select {
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        button.calc-btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+
+        button.calc-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Results */
+        .result-box {
+            background: var(--secondary);
+            border: 1px solid #bfdbfe;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .result-box.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            padding-top: 0.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 1.1rem;
+        }
+
+        .result-label {
+            color: var(--text-light);
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Checkbox special styling */
+        .checkbox-group {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .checkbox-group input {
+            width: auto;
+        }
+
+        /* Back to top */
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 900;
+            transition: transform 0.2s;
+        }
+
+        #backToTop:hover {
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#tool1" class="nav-link">Pay Calc</a>
+            <a href="#tool2" class="nav-link">Late Fee</a>
+            <a href="#tool3" class="nav-link">SEO Brief</a>
+            <a href="#tool4" class="nav-link">AdSense</a>
+            <a href="#tool5" class="nav-link">YouTube</a>
+            <a href="#tool6" class="nav-link">Sub vs One</a>
+            <a href="#tool7" class="nav-link">Rank & Rent</a>
+            <a href="#tool8" class="nav-link">Refunds</a>
+            <a href="#tool9" class="nav-link">Contract</a>
+            <a href="#tool10" class="nav-link">Side Hustle</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- TOOL 1: Overtime & Night Shift Pay Calculator -->
+        <section id="tool1">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">1. Overtime & Night Shift Pay Calculator</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Hourly Rate</label><input type="number" id="t1_rate" min="0"
+                            step="0.01"></div>
+                    <div class="form-group"><label>Normal Hours</label><input type="number" id="t1_normHrs" min="0">
+                    </div>
+                    <div class="form-group"><label>Overtime Hours</label><input type="number" id="t1_otHrs" min="0">
+                    </div>
+                    <div class="form-group"><label>OT Multiplier (e.g. 1.5)</label><input type="number" id="t1_otMult"
+                            min="0" step="0.1" value="1.5"></div>
+                    <div class="form-group"><label>Night Hours</label><input type="number" id="t1_nightHrs" min="0">
+                    </div>
+                    <div class="form-group"><label>Night Diff %</label><input type="number" id="t1_nightDiff" min="0"
+                            value="10"></div>
+                    <div class="form-group"><label>Weekend Hours</label><input type="number" id="t1_wkHrs" min="0">
+                    </div>
+                    <div class="form-group"><label>Weekend Bonus %</label><input type="number" id="t1_wkBonus" min="0"
+                            value="30"></div>
+                </div>
+                <button class="calc-btn" onclick="calcTool1()">Calculate Pay</button>
+                <div id="res1" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 2: Freelancer Late Payment Interest Calculator -->
+        <section id="tool2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">2. Freelancer Late Payment Interest</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Invoice Amount</label><input type="number" id="t2_amount" min="0"
+                            step="0.01"></div>
+                    <div class="form-group"><label>Due Date</label><input type="date" id="t2_due"></div>
+                    <div class="form-group"><label>Paid Date</label><input type="date" id="t2_paid"></div>
+                    <div class="form-group"><label>Annual Interest %</label><input type="number" id="t2_interest"
+                            min="0" step="0.1" value="8"></div>
+                    <div class="form-group"><label>Fixed Late Fee</label><input type="number" id="t2_fixed" min="0"
+                            value="40"></div>
+                    <div class="form-group"><label>Daily Fee</label><input type="number" id="t2_daily" min="0"
+                            value="0"></div>
+                </div>
+                <button class="calc-btn" onclick="calcTool2()">Calculate Interest & Fees</button>
+                <div id="res2" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 3: SEO Content Brief Generator -->
+        <section id="tool3">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">3. SEO Content Brief Generator</h2>
+                </div>
+                <div class="form-grid" style="grid-template-columns: 1fr;">
+                    <div class="form-group"><label>Target Keyword</label><input type="text" id="t3_keyword"
+                            placeholder="e.g., 'best running shoes'"></div>
+                </div>
+                <button class="calc-btn" onclick="calcTool3()">Generate Brief</button>
+                <div id="res3" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 4: AdSense RPM & Earnings Calculator -->
+        <section id="tool4">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">4. AdSense RPM & Earnings</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Pageviews</label><input type="number" id="t4_views" min="0"></div>
+                    <div class="form-group"><label>CTR %</label><input type="number" id="t4_ctr" min="0" step="0.01"
+                            value="1.5"></div>
+                    <div class="form-group"><label>CPC ($)</label><input type="number" id="t4_cpc" min="0" step="0.01"
+                            value="0.5"></div>
+                    <div class="form-group"><label>RPM ($)</label><input type="number" id="t4_rpm" min="0" step="0.01"
+                            value="5.0"></div>
+                </div>
+                <button class="calc-btn" onclick="calcTool4()">Calculate Earnings</button>
+                <div id="res4" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 5: YouTube Video Profit Calculator -->
+        <section id="tool5">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">5. YouTube Video Profit</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Script Cost</label><input type="number" id="t5_script" min="0"></div>
+                    <div class="form-group"><label>Voiceover Cost</label><input type="number" id="t5_voice" min="0">
+                    </div>
+                    <div class="form-group"><label>Editing Cost</label><input type="number" id="t5_edit" min="0"></div>
+                    <div class="form-group"><label>Thumbnail Cost</label><input type="number" id="t5_thumb" min="0">
+                    </div>
+                    <div class="form-group"><label>Other Costs</label><input type="number" id="t5_other" min="0"></div>
+                    <div class="form-group"><label>Views</label><input type="number" id="t5_views" min="0"></div>
+                    <div class="form-group"><label>RPM ($)</label><input type="number" id="t5_rpm" min="0" step="0.01">
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calcTool5()">Calculate Profit</button>
+                <div id="res5" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 6: Subscription vs One-Time Calculator -->
+        <section id="tool6">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">6. Subscription vs One-Time</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>One-Time Price</label><input type="number" id="t6_oneTime" min="0">
+                    </div>
+                    <div class="form-group"><label>Monthly Price</label><input type="number" id="t6_monthly" min="0">
+                    </div>
+                    <div class="form-group"><label>Duration (Months)</label><input type="number" id="t6_months" min="1"
+                            value="12"></div>
+                    <div class="form-group"><label>Churn Rate %</label><input type="number" id="t6_churn" min="0"
+                            value="5"></div>
+                    <div class="form-group"><label>CAC (Cost to Acquire)</label><input type="number" id="t6_cac"
+                            min="0"></div>
+                </div>
+                <button class="calc-btn" onclick="calcTool6()">Compare Models</button>
+                <div id="res6" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 7: Rank & Rent SEO Profit Calculator -->
+        <section id="tool7">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">7. Rank & Rent Profit</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Setup Cost</label><input type="number" id="t7_setup" min="0"></div>
+                    <div class="form-group"><label>Monthly SEO Cost</label><input type="number" id="t7_seo" min="0">
+                    </div>
+                    <div class="form-group"><label>Monthly Rent Income</label><input type="number" id="t7_rent" min="0">
+                    </div>
+                    <div class="form-group"><label>Months</label><input type="number" id="t7_months" min="1" value="12">
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calcTool7()">Calculate ROI</button>
+                <div id="res7" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 8: Refund & Chargeback Calculator -->
+        <section id="tool8">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">8. Refund & Chargeback Impact</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Product Price</label><input type="number" id="t8_price" min="0">
+                    </div>
+                    <div class="form-group"><label>Total Sales (#)</label><input type="number" id="t8_sales" min="0">
+                    </div>
+                    <div class="form-group"><label>Refund Rate %</label><input type="number" id="t8_refund" min="0"
+                            step="0.1" value="5"></div>
+                    <div class="form-group"><label>Chargeback Rate %</label><input type="number" id="t8_cb" min="0"
+                            step="0.1" value="1"></div>
+                    <div class="form-group"><label>Gateway Fee %</label><input type="number" id="t8_gate" min="0"
+                            step="0.1" value="2.9"></div>
+                    <div class="form-group"><label>Platform Fee %</label><input type="number" id="t8_plat" min="0"
+                            step="0.1" value="10"></div>
+                </div>
+                <button class="calc-btn" onclick="calcTool8()">Calculate Losses</button>
+                <div id="res8" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 9: Contract Review Cost Estimator -->
+        <section id="tool9">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">9. Contract Review Estimator</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Number of Pages</label><input type="number" id="t9_pages" min="1">
+                    </div>
+                    <div class="form-group"><label>Hourly Rate</label><input type="number" id="t9_rate" min="0"></div>
+                    <div class="form-group">
+                        <label>Complexity</label>
+                        <select id="t9_complex">
+                            <option value="1">Low (1 hr/page)</option>
+                            <option value="1.5">Medium (1.5 hrs/page)</option>
+                            <option value="2">High (2 hrs/page)</option>
+                        </select>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="t9_urgent">
+                        <label for="t9_urgent">Urgent (+20%)</label>
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calcTool9()">Estimate Cost</button>
+                <div id="res9" class="result-box"></div>
+            </div>
+        </section>
+
+        <!-- TOOL 10: Side Hustle Hourly Calculator -->
+        <section id="tool10">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">10. Side Hustle Hourly Rate</h2>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group"><label>Hustle Name</label><input type="text" id="t10_name"
+                            placeholder="E.g. Uber Driving"></div>
+                    <div class="form-group"><label>Weekly Hours</label><input type="number" id="t10_hours" min="1">
+                    </div>
+                    <div class="form-group"><label>Monthly Income</label><input type="number" id="t10_income" min="0">
+                    </div>
+                </div>
+                <button class="calc-btn" onclick="calcTool10()">Calculate Hourly Rate</button>
+                <div id="res10" class="result-box"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <button id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <script>
+        // Utilities
+        const getVal = (id) => parseFloat(document.getElementById(id).value) || 0;
+        const getStr = (id) => document.getElementById(id).value;
+        const setHtml = (id, html) => {
+            const el = document.getElementById(id);
+            el.innerHTML = html;
+            el.classList.add('show');
+        };
+        const formatMoney = (num) => '$' + num.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        // Tool 1: Overtime & Night Shift Pay
+        function calcTool1() {
+            const rate = getVal('t1_rate');
+            const normHrs = getVal('t1_normHrs');
+            const otHrs = getVal('t1_otHrs');
+            const otMult = getVal('t1_otMult');
+            const nightHrs = getVal('t1_nightHrs');
+            const nightDiff = getVal('t1_nightDiff');
+            const wkHrs = getVal('t1_wkHrs');
+            const wkBonus = getVal('t1_wkBonus');
+
+            const normalPay = rate * normHrs;
+            const overtimePay = rate * otHrs * otMult;
+            const nightPay = rate * nightHrs * (nightDiff / 100);
+            const weekendPay = rate * wkHrs * (wkBonus / 100);
+            const total = normalPay + overtimePay + nightPay + weekendPay;
+
+            setHtml('res1', `
+            <div class="result-item"><span class="result-label">Normal Pay:</span><span class="result-value">${formatMoney(normalPay)}</span></div>
+            <div class="result-item"><span class="result-label">Overtime Pay:</span><span class="result-value">${formatMoney(overtimePay)}</span></div>
+            <div class="result-item"><span class="result-label">Night Shift Diff:</span><span class="result-value">${formatMoney(nightPay)}</span></div>
+            <div class="result-item"><span class="result-label">Weekend Bonus:</span><span class="result-value">${formatMoney(weekendPay)}</span></div>
+            <div class="result-item"><span class="result-label">TOTAL PAY:</span><span class="result-value">${formatMoney(total)}</span></div>
+        `);
+        }
+
+        // Tool 2: Freelancer Late Payment
+        function calcTool2() {
+            const amount = getVal('t2_amount');
+            const dueDate = new Date(getStr('t2_due'));
+            const paidDate = new Date(getStr('t2_paid'));
+            const annualInterest = getVal('t2_interest');
+            const fixedFee = getVal('t2_fixed');
+            const dailyFee = getVal('t2_daily');
+
+            if (isNaN(dueDate) || isNaN(paidDate)) return alert('Please enter valid dates');
+
+            const diffTime = paidDate - dueDate;
+            const daysLate = Math.max(0, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+
+            const interest = (amount * annualInterest / 100) * (daysLate / 365);
+            const lateFee = fixedFee + (dailyFee * daysLate);
+            const totalDue = amount + interest + lateFee;
+
+            setHtml('res2', `
+            <div class="result-item"><span class="result-label">Days Late:</span><span class="result-value">${daysLate} days</span></div>
+            <div class="result-item"><span class="result-label">Interest Earned:</span><span class="result-value">${formatMoney(interest)}</span></div>
+            <div class="result-item"><span class="result-label">Late Fees:</span><span class="result-value">${formatMoney(lateFee)}</span></div>
+            <div class="result-item"><span class="result-label">TOTAL DUE:</span><span class="result-value">${formatMoney(totalDue)}</span></div>
+        `);
+        }
+
+        // Tool 3: SEO Content Brief
+        function calcTool3() {
+            const kw = getStr('t3_keyword').trim();
+            if (!kw) return alert('Please enter a keyword');
+
+            const capitalize = (s) => s.replace(/\\b\\w/g, l => l.toUpperCase());
+            const kwCap = capitalize(kw);
+
+            const h1 = `The Ultimate Guide to ${kwCap}: Everything You Need to Know`;
+            const h2s = [
+                `What is ${kwCap}?`,
+                `Benefits of ${kwCap}`,
+                `How to Choose the Best ${kwCap}`,
+                `Top Tips for Using ${kwCap}`,
+                `Common Mistakes to Avoid with ${kwCap}`
+            ];
+            const faqs = Array.from({ length: 10 }, (_, i) => `Is ${kwCap} safe? (Example Question ${i + 1})`); // Placeholder generation as "Auto-generated" logic was requested based on string manipulation, real FAQs need AI/DB.
+
+            // Better string manipulation for FAQs to look slightly more real
+            const faqList = [
+                `What is the price of ${kw}?`,
+                `How long does ${kw} last?`,
+                `Is ${kw} worth it?`,
+                `Where can I buy ${kw}?`,
+                `Can ${kw} help me?`,
+                `What are the alternatives to ${kw}?`,
+                `History of ${kw}`,
+                `Best brands for ${kw}`,
+                `How to maintain ${kw}?`,
+                `Future of ${kw}`
+            ].map(q => `<li style="margin-left: 1.5rem">${q}</li>`).join('');
+
+            setHtml('res3', `
+            <div class="result-item" style="display:block"><span class="result-label">Suggested H1:</span><br><strong style="color:var(--text-dark)">${h1}</strong></div>
+            <div class="result-item" style="display:block"><span class="result-label">Suggested H2s:</span>
+                <ul style="margin-top:0.5rem; color:var(--text-dark)">${h2s.map(h => `<li style="margin-left:1.5rem">${h}</li>`).join('')}</ul>
+            </div>
+            <div class="result-item" style="display:block; border:none"><span class="result-label">Generated FAQs:</span>
+                <ul style="margin-top:0.5rem; color:var(--text-dark)">${faqList}</ul>
+            </div>
+        `);
+        }
+
+        // Tool 4: AdSense RPM
+        function calcTool4() {
+            const views = getVal('t4_views');
+            const ctr = getVal('t4_ctr');
+            const cpc = getVal('t4_cpc');
+            const rpm = getVal('t4_rpm');
+
+            const clicks = views * (ctr / 100);
+            const cpcRevenue = clicks * cpc;
+            const rpmRevenue = (views * rpm) / 1000;
+            const total = cpcRevenue + rpmRevenue; // Note: usually it's one or the other or combined, but user formula says add them.
+
+            setHtml('res4', `
+            <div class="result-item"><span class="result-label">Est. Clicks:</span><span class="result-value">${Math.round(clicks)}</span></div>
+            <div class="result-item"><span class="result-label">CPC Income:</span><span class="result-value">${formatMoney(cpcRevenue)}</span></div>
+            <div class="result-item"><span class="result-label">RPM Income:</span><span class="result-value">${formatMoney(rpmRevenue)}</span></div>
+            <div class="result-item"><span class="result-label">TOTAL ESTIMATED:</span><span class="result-value">${formatMoney(total)}</span></div>
+        `);
+        }
+
+        // Tool 5: YouTube Profit
+        function calcTool5() {
+            const cost = getVal('t5_script') + getVal('t5_voice') + getVal('t5_edit') + getVal('t5_thumb') + getVal('t5_other');
+            const views = getVal('t5_views');
+            const rpm = getVal('t5_rpm');
+
+            const revenue = (views * rpm) / 1000;
+            const profit = revenue - cost;
+            const breakeven = rpm > 0 ? (cost * 1000) / rpm : 0;
+
+            setHtml('res5', `
+            <div class="result-item"><span class="result-label">Total Cost:</span><span class="result-value">${formatMoney(cost)}</span></div>
+            <div class="result-item"><span class="result-label">Revenue:</span><span class="result-value">${formatMoney(revenue)}</span></div>
+            <div class="result-item"><span class="result-label">Profit/Loss:</span><span class="result-value" style="color:${profit >= 0 ? 'green' : 'red'}">${formatMoney(profit)}</span></div>
+            <div class="result-item"><span class="result-label">Break-Even Views:</span><span class="result-value">${Math.ceil(breakeven).toLocaleString()}</span></div>
+        `);
+        }
+
+        // Tool 6: Sub vs One-Time
+        function calcTool6() {
+            const oneTime = getVal('t6_oneTime');
+            const monthly = getVal('t6_monthly');
+            const months = getVal('t6_months');
+            const churn = getVal('t6_churn');
+            const cac = getVal('t6_cac');
+
+            const subRev = monthly * months;
+            const adjRev = subRev - (subRev * churn / 100);
+            const profitDiff = adjRev - oneTime;
+            const roi = cac > 0 ? ((adjRev - cac) / cac) * 100 : 0;
+
+            setHtml('res6', `
+            <div class="result-item"><span class="result-label">Gross Sub Revenue:</span><span class="result-value">${formatMoney(subRev)}</span></div>
+            <div class="result-item"><span class="result-label">Adjusted (w/ Churn):</span><span class="result-value">${formatMoney(adjRev)}</span></div>
+            <div class="result-item"><span class="result-label">vs One-Time:</span><span class="result-value" style="color:${profitDiff >= 0 ? 'green' : 'red'}">${formatMoney(profitDiff)}</span></div>
+            <div class="result-item"><span class="result-label">ROI:</span><span class="result-value">${roi.toFixed(1)}%</span></div>
+        `);
+        }
+
+        // Tool 7: Rank & Rent
+        function calcTool7() {
+            const setup = getVal('t7_setup');
+            const seo = getVal('t7_seo');
+            const rent = getVal('t7_rent');
+            const months = getVal('t7_months');
+
+            const totalSeo = seo * months;
+            const totalCost = setup + totalSeo;
+            const income = rent * months;
+            const profit = income - totalCost;
+            const roi = totalCost > 0 ? (profit / totalCost) * 100 : 0;
+
+            setHtml('res7', `
+            <div class="result-item"><span class="result-label">Total SEO Cost:</span><span class="result-value">${formatMoney(totalSeo)}</span></div>
+            <div class="result-item"><span class="result-label">Total Rent Income:</span><span class="result-value">${formatMoney(income)}</span></div>
+            <div class="result-item"><span class="result-label">Net Profit:</span><span class="result-value" style="color:${profit >= 0 ? 'green' : 'red'}">${formatMoney(profit)}</span></div>
+            <div class="result-item"><span class="result-label">ROI:</span><span class="result-value">${roi.toFixed(1)}%</span></div>
+        `);
+        }
+
+        // Tool 8: Refund & Chargeback
+        function calcTool8() {
+            const price = getVal('t8_price');
+            const sales = getVal('t8_sales');
+            const refundPct = getVal('t8_refund');
+            const cbPct = getVal('t8_cb');
+            const gatePct = getVal('t8_gate');
+            const platPct = getVal('t8_plat');
+
+            const gross = sales * price;
+            const refundLoss = (refundPct / 100) * gross;
+            const cbLoss = (cbPct / 100) * gross;
+            const fees = ((gatePct + platPct) / 100) * gross;
+            const net = gross - refundLoss - cbLoss - fees;
+
+            setHtml('res8', `
+            <div class="result-item"><span class="result-label">Refund Loss:</span><span class="result-value" style="color:red">-${formatMoney(refundLoss)}</span></div>
+            <div class="result-item"><span class="result-label">Chargeback Loss:</span><span class="result-value" style="color:red">-${formatMoney(cbLoss)}</span></div>
+            <div class="result-item"><span class="result-label">Platform/Gate Fees:</span><span class="result-value" style="color:red">-${formatMoney(fees)}</span></div>
+            <div class="result-item"><span class="result-label">NET REVENUE:</span><span class="result-value">${formatMoney(net)}</span></div>
+        `);
+        }
+
+        // Tool 9: Contract Review
+        function calcTool9() {
+            const pages = getVal('t9_pages');
+            const rate = getVal('t9_rate');
+            const complex = parseFloat(document.getElementById('t9_complex').value);
+            const urgent = document.getElementById('t9_urgent').checked;
+
+            let hours = pages * complex;
+            let cost = hours * rate;
+            if (urgent) cost *= 1.2;
+
+            setHtml('res9', `
+            <div class="result-item"><span class="result-label">Est. Hours:</span><span class="result-value">${hours.toFixed(1)} hrs</span></div>
+            <div class="result-item"><span class="result-label">Complexity Factor:</span><span class="result-value">${complex}x</span></div>
+            <div class="result-item"><span class="result-label">Urgency Surcharge:</span><span class="result-value">${urgent ? '+20%' : 'None'}</span></div>
+            <div class="result-item"><span class="result-label">ESTIMATED COST:</span><span class="result-value">${formatMoney(cost)}</span></div>
+        `);
+        }
+
+        // Tool 10: Side Hustle
+        function calcTool10() {
+            const name = getStr('t10_name') || 'Side Hustle';
+            const hours = getVal('t10_hours');
+            const monthly = getVal('t10_income');
+
+            const hourly = hours > 0 ? monthly / (hours * 4) : 0;
+
+            setHtml('res10', `
+            <div class="result-item"><span class="result-label">Hustle:</span><span class="result-value">${name}</span></div>
+            <div class="result-item"><span class="result-label">Monthly Hours:</span><span class="result-value">${hours * 4}</span></div>
+            <div class="result-item"><span class="result-label">HOURLY RATE:</span><span class="result-value">${formatMoney(hourly)}/hr</span></div>
+        `);
+        }
+
+        // Back to top logic
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            if (window.scrollY > 300) {
+                btn.style.display = 'flex';
+            } else {
+                btn.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
